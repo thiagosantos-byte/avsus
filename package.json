@@ -1,0 +1,43 @@
+{
+  "name": "healthdata-brasil",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --watch backend/server.js",
+    "dev:web": "vite --config frontend/vite.config.js",
+    "build": "vite build --config frontend/vite.config.js",
+    "start": "node backend/server.js",
+    "test": "node --test",
+    "check": "node --check shared/csv.js && node --check backend/app.js && node --check backend/ministry.js && node --check backend/validation.js && node --check backend/resources.js && node --check backend/dataShape.js && node --check backend/supabase.js && node --check backend/cache.js && node --check backend/server.js && node --check api/health.js && node --check api/sources.js && node --check api/sources/status.js && node --check \"api/sources/[resource]/schema.js\" && node --check \"api/data/[resource].js\" && node --check backend/privacy.js && node --check backend/analytics.js && node --check backend/pagination.js && node --check backend/status.js && node --check api/overview.js && node --check api/estabelecimentos/index.js && node --check \"api/estabelecimentos/[cnes].js\" && node --check api/map/points.js && node --check api/indicadores/dengue.js && node --check api/indicadores/epidemiologia.js && node --check api/indicadores/vacinacao.js && node --check api/geo/estados.js && node --check api/geo/municipios.js && node --check backend/ibge.js && node --check backend/ibge.test.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.119.2",
+    "axios": "^1.12.2",
+    "bootstrap": "^5.3.9",
+    "cors": "^2.8.5",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.1.0",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.79.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.9.4",
+    "recharts": "^3.2.1",
+    "zod": "^4.1.12",
+    "dotenv": "^16.6.1",
+    "leaflet.heat": "^0.2.0",
+    "leaflet.markercluster": "^1.5.3",
+    "@googlemaps/markerclusterer": "^2.6.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^9.2.1",
+    "vite": "^8.3.8"
+  }
+}
